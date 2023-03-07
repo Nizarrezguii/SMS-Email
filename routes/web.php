@@ -45,19 +45,14 @@ Route::post('/contact', function () {
     return redirect('/microsoft')->with('flash', 'Email sent successfully');
 });
 
-Route::get('/microsoft', [OutlookController::class, 'index'])->middleware('verified');
-Route::get('/microsoft/search', [OutlookController::class, 'search'])->name('emails.search');
-// Route::get('/microsoft/search', [OutlookController::class, 'search'])->name('emails.search');
-
-
-
 Route::get('/read-email', function () {
     return view('emails.read-email');
 })->middleware('verified');
 
 
 //test mail
-Route::get('/test', [EmailController::class, 'showEmails']);
-Route::get('/fetch-latest-email', [EmailController::class, 'fetchEmails'])->name('fetch.latest.email');
-Route::get('/search', [EmailController::class, 'searchQuery'])->name('emails.search');
+Route::get('/microsoft', [EmailController::class, 'showEmails'])->middleware('verified');
+Route::get('/fetch-latest-email', [EmailController::class, 'fetchEmails'])->name('fetch.latest.email')->middleware('verified');
+Route::get('/emails', [EmailController::class, 'showEmails'])->name('emails.index');
+
 

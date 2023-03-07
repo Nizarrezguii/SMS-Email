@@ -55,14 +55,12 @@
                             <h3 class="card-title mt-3 ">Inbox</h3>
                         <div class="card-tools mt-3">
                             <div class="input-group input-group-sm">
-                                <form method="GET" action="{{ route('emails.search') }}">
-                            <div class="input-group mb-3">
-                                <input wire:model.debounce.350ms="search" type="text" name="search" class="form-control" value="{{ $search ?? '' }}" placeholder="Search...">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">Search</button>
-                                </div>
-                            </div>
-                        </form>
+                                <form method="GET" action="{{ route('emails.index') }}">
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="search" class="form-control" placeholder="Search by subject" value="{{ $search }}">
+                                        <button class="btn btn-primary" type="submit">Search</button>
+                                    </div>
+                                </form>
                     </div>
                         </div>
                     <!-- /.card-tools -->

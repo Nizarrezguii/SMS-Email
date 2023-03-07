@@ -80,23 +80,13 @@ class EmailController extends Controller
     //this function return the emails from database to the view
     public function showEmails(Request $request)
 {
-    // $emails = Email::orderBy('date', 'desc');
+    $search = $request->input('search');
 
-    // if ($request->has('search')) {
-    //     $search = $request->input('search');
-    //     $emails = $emails->where(function ($query) use ($search) {
-    //         $query->where('from', 'LIKE', "%{$search}%")
-    //               ->orWhere('to', 'LIKE', "%{$search}%")
-    //               ->orWhere('subject', 'LIKE', "%{$search}%")
-    //               ->orWhere('body', 'LIKE', "%{$search}%");
-    //     });
-    // }
-
-    // $emails = $emails->paginate(8);
-
-    // return view('emails.test', compact('emails', 'search'));
-    $emails = DB::table('emails')->paginate(8);
-    return view('emails.test', ['emails' => $emails]);
+        $emails = Email::when($search, function ($query) use ($search) {
+                return $query->where('subject', 'LIKE', '%' . $search . '%');
+            })
+            ->paginate(8);
+    return view('emails.test', compact('emails', 'search'));
 }
 }
 
