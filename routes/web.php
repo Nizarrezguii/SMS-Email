@@ -39,6 +39,7 @@ Route::controller(ClientsController::class)->group(function() {
 Route::get('/contact', function () {
     return view('backend.layouts.Emails.compose');
 });
+// this route is responsible for sending emails to change configuration go to the env file and mail folder inside app folder
 Route::post('/contact', function () {
     $data = request(['email', 'subject', 'message']);
     Mail::to($data['email'])->send(new ContactClients($data));
