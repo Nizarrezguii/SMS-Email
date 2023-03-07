@@ -15,9 +15,11 @@
         "laravel/ui": "^4.2",
         "league/oauth2-client": "^2.6",
         "livewire/livewire": "^2.12",
+        "maatwebsite/excel": "^3.1",
         "microsoft/microsoft-graph": "^1.88",
         "php-imap/php-imap": "^5.0",
         "php-mime-mail-parser/php-mime-mail-parser": "^1.0",
+        "psr/simple-cache": "1.0",
         "vlucas/phpdotenv": "^5.5",
         "webklex/laravel-imap": "2.4.0",
         "zendframework/zend-mail": "^2.5"

@@ -92,18 +92,13 @@
         </div>
         <div style="float:left" class="ms-3 mt-4">
             <a class="btn btn-dark" href="{{url('add-client')}}">Add Client</a>
+            <a class="btn btn-dark" href="url('export-user')">Export Client List</a>
+            <a class="btn btn-dark" href="url('import-user')">Import Client List</a>
         </div>
         <!-- /.table-responsive -->
     </div>
       </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer mt-5">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
 </div>
 <!-- ./wrapper -->
 

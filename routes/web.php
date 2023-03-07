@@ -56,4 +56,10 @@ Route::get('/microsoft', [EmailController::class, 'showEmails'])->middleware('ve
 Route::get('/fetch-latest-email', [EmailController::class, 'fetchEmails'])->name('fetch.latest.email')->middleware('verified');
 Route::get('/emails', [EmailController::class, 'showEmails'])->name('emails.index');
 
+//export clients from excel file
+Route::get('/excel', function () {
+    return view('backend.layouts.clients.excel.excel');
+})->middleware('verified');
+Route::get('/export-user', [ClientsController::class, 'excelExport'])->name('export-user');
+
 

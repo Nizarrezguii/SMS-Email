@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Clients;
+use Excel;
+use App\Exports\ClientsExport;
 class ClientsController extends Controller
 {
     public function index() {
@@ -67,7 +69,7 @@ class ClientsController extends Controller
         return redirect()->back()->with('success', 'client deleted successfully');
     }
 
-    public function sendEmail() {
-
+    public function excelExport() {
+        return Excel::download(new ClientsExport, 'users.xlsx');
     }
 }
