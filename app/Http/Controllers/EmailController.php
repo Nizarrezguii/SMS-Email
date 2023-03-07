@@ -74,19 +74,19 @@ class EmailController extends Controller
 
     // Close the connection to the Outlook IMAP server
     imap_close($inbox);
-    return redirect('/test');
+    return redirect('/microsoft');
 }
 
     //this function return the emails from database to the view
     public function showEmails(Request $request)
 {
     $search = $request->input('search');
-
+    //if a search query is found it return data by it if not it will return it normal
         $emails = Email::when($search, function ($query) use ($search) {
                 return $query->where('subject', 'LIKE', '%' . $search . '%');
             })
             ->paginate(8);
-    return view('emails.test', compact('emails', 'search'));
+    return view('emails.microsoft', compact('emails', 'search'));
 }
 }
 
