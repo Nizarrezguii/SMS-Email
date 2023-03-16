@@ -97,7 +97,7 @@
                   <!-- /.card-body -->
                   <div class="card-footer clearfix">
                     <a href="{{route('addClients')}}" class="btn btn-sm btn-info float-left">Place New Client</a>
-                    <a href="{{route('clients')}}" class="btn btn-sm btn-secondary float-right">All Clients</a>
+                    <a href="{{route('clients.search')}}" class="btn btn-sm btn-secondary float-right">All Clients</a>
                   </div>
                   <!-- /.card-footer -->
                 </div>

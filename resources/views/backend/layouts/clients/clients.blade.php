@@ -53,23 +53,21 @@
                     <div class="alert alert-success" role="alert">{{Session::get('success')}}</div>
                 @endif
             </div>
-            <form action="">
-                <div class="input-group input-group-sm">
-                  <input type="text" name="search" class="form-control" placeholder="Search By Mail">
-                  <div class="input-group-append">
-                        <button class="btn btn-primary">Search</button>
-                  </div>
+            <form method="GET" action="{{ route('clients.search') }}">
+                <div class="input-group mb-3">
+                    <input type="text" name="search" class="form-control" placeholder="Search By Email" value="{{ $search }}">
+                    <button class="btn btn-primary" type="submit">Search</button>
                 </div>
             </form>
-          <table class="table m-0">
+            <table class="table m-0">
             <thead>
             <tr>
-              <th>Client ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Edit</th>
-              <th>Delete</th>
+                <th>Client ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -90,10 +88,10 @@
           </table>
           {{$clients->onEachSide(1)->links()}}
         </div>
-        <div style="float:left" class="ms-3 mt-4">
+        <div style="float:left" class="ms-3 mt-4 mb-5">
             <a class="btn btn-dark" href="{{url('add-client')}}">Add Client</a>
-            <a class="btn btn-dark" href="url('export-user')">Export Client List</a>
-            <a class="btn btn-dark" href="url('import-user')">Import Client List</a>
+            <a class="btn btn-dark" href="{{url('excel')}}">Upload Client List</a>
+            <a class="btn btn-dark" href="{{url('export-client')}}">Download Client List</a>
         </div>
         <!-- /.table-responsive -->
     </div>
@@ -132,8 +130,6 @@
 <script src="{{asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('backend/dist/js/adminlte.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('backend/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('backend/dist/js/pages/dashboard.js')}}"></script>
 </body>

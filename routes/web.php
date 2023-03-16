@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\EmailController;
-use App\Http\Controllers\OutlookController;
 use App\Mail\ContactClients;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -29,12 +28,12 @@ Auth::routes(['verify'=> true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 
 Route::controller(ClientsController::class)->group(function() {
-    Route::get('/home/clients', 'index')->name('clients')->middleware('auth');
     Route::get('/home/add-client', 'addClient')->name('addClients')->middleware('auth');
     Route::post('/save-client', 'saveClient')->middleware('auth');
     Route::get('/edit-client/{id}', 'editClient')->middleware('auth');
     Route::post('/update-client', 'updateClient')->middleware('auth');
     Route::get('/delete-client/{id}', 'deleteClient')->middleware('auth');
+    Route::get('/clients', 'search')->name('clients.search')->middleware('auth');
 });
 Route::get('/contact', function () {
     return view('backend.layouts.Emails.compose');
@@ -59,7 +58,10 @@ Route::get('/emails', [EmailController::class, 'showEmails'])->name('emails.inde
 //export clients from excel file
 Route::get('/excel', function () {
     return view('backend.layouts.clients.excel.excel');
-})->middleware('verified');
-Route::get('/export-user', [ClientsController::class, 'excelExport'])->name('export-user');
+})->name('excel')->middleware('verified');
+Route::get('/export-client', [ClientsController::class, 'excelExport'])->name('export-client')->middleware('verified');
+Route::post('/import-client', [ClientsController::class, 'excelImport'])->name('import-client')->middleware('verified');
+
+
 
 

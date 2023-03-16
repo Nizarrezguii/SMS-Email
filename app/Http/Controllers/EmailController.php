@@ -12,10 +12,11 @@ class EmailController extends Controller
 {
     public function fetchEmails()
 {
+    // ini_set('max_execution_time', 440);
     // Outlook IMAP settings
     $host = '{outlook.office365.com:993/imap/ssl}';
     $username = 'nizarrezguii@outlook.com';
-    $password = 'fvnqjflepbyqjjij';
+    $password = '';
 
     // Connect to the Outlook IMAP server
     $inbox = imap_open($host, $username, $password);

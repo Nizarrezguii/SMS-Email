@@ -42,7 +42,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('/home/clients')}}" class="nav-link {{ 'home/clients' == request()->path() ? 'active' : '' }}">
+            <a href="{{url('/clients')}}" class="nav-link {{ 'home/clients' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon far fa-user"></i>
               <p>
                 Clients

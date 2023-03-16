@@ -6,11 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\Clients;
 use Excel;
 use App\Exports\ClientsExport;
+use App\Imports\ClientsImport;
+
 class ClientsController extends Controller
 {
-    public function index() {
-
-        return view('backend.layouts.clients.clients');
+    public function search(Request $request) {
+        $search = $request->input('search');
+    //if a search query is found it return data by it if not it will return it normal
+        $clients = Clients::when($search, function ($query) use ($search) {
+                return $query->where('email', 'LIKE', '%' . $search . '%');
+            })
+            ->paginate(8);
+    return view('backend.layouts.clients.clients', compact('clients', 'search'));
     }
 
     public function addClient() {
@@ -70,6 +77,11 @@ class ClientsController extends Controller
     }
 
     public function excelExport() {
-        return Excel::download(new ClientsExport, 'users.xlsx');
+        return Excel::download(new ClientsExport, 'clients.xlsx');
+    }
+
+    public function excelImport(Request $request) {
+        Excel::import(new ClientsImport, $request->file('file'));
+        return redirect('/clients');
     }
 }
