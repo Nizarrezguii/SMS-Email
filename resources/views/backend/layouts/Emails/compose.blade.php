@@ -67,17 +67,18 @@
                 <form action="/contact" method="POST">
                     @csrf
                 <div class="form-group">
-                    <select name="" id="">
-                        <option value="nizar">nizar</option>
+                    <select class="form-control" name='email'>
+                        @foreach ($data as $item)
+                            <option value="">{{$item->email}}</option>
+                        @endforeach
                     </select>
-                  <input class="form-control" placeholder="To:" name='email' value="{{old('email')}}">
+                  {{-- <input class="form-control" placeholder="To:" name='email' value="{{old('email')}}"> --}}
                 </div>
                 <div class="form-group">
                   <input class="form-control" placeholder="Subject:" name='subject' value="{{old('subject')}}">
                 </div>
                 <div class="form-group">
                     <textarea id="compose-textarea" class="form-control"  style="height: 300px" name='message' value="{{old('message')}}">
-
                     </textarea>
                 </div>
               </div>

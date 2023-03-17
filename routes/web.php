@@ -42,12 +42,9 @@ Route::get('/contact', function () {
 Route::post('/contact', function () {
     $data = request(['email', 'subject', 'message']);
     Mail::to($data['email'])->send(new ContactClients($data));
-    return redirect('/microsoft')->with('flash', 'Email sent successfully');
+    return redirect('/microsoft')->with('flash', 'Email sent successfully')->middleware('auth');
 });
-
-Route::get('/read-email', function () {
-    return view('emails.read-email');
-})->middleware('verified');
+Route::get('/contact', [EmailController::class,'selectEmail'])->middleware('auth');
 
 
 //test mail

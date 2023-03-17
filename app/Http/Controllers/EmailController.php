@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clients;
 use App\Models\Email;
 use Exception;
 use Illuminate\Http\Request;
@@ -78,6 +79,11 @@ class EmailController extends Controller
             })
             ->paginate(8);
     return view('emails.microsoft', compact('emails', 'search'));
+}
+
+public function selectEmail() {
+    $data = Clients::all();
+    return view('backend.layouts.Emails.compose', compact('data'));
 }
 }
 
