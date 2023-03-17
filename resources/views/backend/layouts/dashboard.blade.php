@@ -125,6 +125,35 @@
                 <!-- /.card-header -->
 
                 <!-- /.card-body -->
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table m-0">
+                          <thead>
+                          <tr>
+                            <th>Email ID</th>
+                            <th>From</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                              @php
+                              $i = 1;
+                              @endphp
+                          @foreach ($emails as $email)
+                              <tr>
+                                  <td>{{$i++}}</td>
+                                  <td>{{$email->from}}</td>
+                                  <td>{{$email->subject}}</td>
+                                  <td>{{$email->date}}</td>
+                              </tr>
+                          @endforeach
+                          </tbody>
+                        </table>
+                        {{$emails->links()}}
+                      </div>
+                    <!-- /.table-responsive -->
+                  </div>
                 <div class="card-footer clearfix">
                   <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add item</button>
                 </div>

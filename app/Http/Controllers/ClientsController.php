@@ -7,6 +7,7 @@ use App\Models\Clients;
 use Excel;
 use App\Exports\ClientsExport;
 use App\Imports\ClientsImport;
+use App\Models\Email;
 
 class ClientsController extends Controller
 {
